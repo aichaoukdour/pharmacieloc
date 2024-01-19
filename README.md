@@ -15,3 +15,7 @@ Clonez le dépôt Git sur votre machine locale. Assurez-vous que Docker est inst
 
 # Contributions et Remarques :
 N'hésitez pas à ouvrir des issues pour signaler des bogues, suggérer des améliorations ou poser des questions
+
+
+# base de donnee
+<img width="569" alt="BDComplete" src="https://github.com/aichaoukdour/pharmacieloc/assets/147880095/3ee198aa-407d-46d0-be8d-9cfbdd357bdf">
