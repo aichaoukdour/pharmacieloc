@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Pharmacies</title>
+</head>
+<body>
+    <h2>Liste des Pharmacies</h2>
+
+    <!-- Affichez les pharmacies ici en utilisant Thymeleaf -->
+    <table>
+        <tr>
+            <th>Nom</th>
+            <th>photo</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Zone</th>
+            <th>Pharmacie de Garde</th>
+            <!-- Ajoutez plus de colonnes si nécessaire -->
+        </tr>
+        <tr th:each="pharmacie : ${pharmacies}">
+            <td th:text="${pharmacie.nom}"></td>
+            <td th:text="${pharmacie.photo}"></td>
+            <td th:text="${pharmacie.lat}"></td>
+            <td th:text="${pharmacie.lon}"></td>
+            <td th:text="${pharmacie.zone.nom}"></td>
+            <td>
+                <ul>
+                    <li th:each="garde : ${pharmacie.phagarde}" th:text="${garde.nom}"></li>
+                </ul>
+            </td>
+            
+        </tr>
+    </table>
+
+    <!-- Formulaire pour ajouter une nouvelle pharmacie -->
+    <h3>Ajouter une nouvelle pharmacie</h3>
+    <form th:action="@{/api/v1/pharmacies/add}" method="post">
+        <!-- Ajoutez les champs nécessaires pour votre formulaire -->
+        <label>Nom: <input type="text" name="nom"></label><br>
+        <label>Zone: <input type="text" name="zone_id"></label><br>
+        <label>Photo: <input type="text" name="photo"></label><br>
+        <label>Latitude: <input type="text" name="lat"></label><br>
+        <label>Longitude: <input type="text" name="lon"></label><br>
+        <label>Pharmacie de Garde: <input type="text" name="phagarde"></label><br>
+        <input type="submit" value="Ajouter">
+    </form>
+     <td>
+            <form th:action="@{/api/v1/pharmacies/deletePharmacie}" method="post">
+                <input type="hidden" name="id" th:value="${pharmacie.id}">
+                <button type="submit">Supprimer</button>
+            </form>
+        </td>
+
+    <!-- Ajoutez des liens ou des boutons pour d'autres fonctionnalités -->
+</body>
+</html>
